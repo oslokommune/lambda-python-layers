@@ -1,0 +1,29 @@
+service: lambda-python-layers
+
+provider:
+  name: aws
+  runtime: python3.7
+  region: ${opt:region, 'eu-west-1'}
+  stage: ${opt:stage, 'dev'}
+  deploymentBucket:
+    name: ok-origo-dataplatform-config-${self:provider.stage}
+    serverSideEncryption: AES256
+  deploymentPrefix: deploy
+
+package:
+  individually: true
+
+layers:
+  pandas:
+    path: pandas_layer # don't use any trailing / or prefix . -> https://github.com/serverless/serverless/issues/5646
+    name: ${self:service}-Python37-Pandas23x
+    description: Pandas 0.23.x with Python 3.7
+    compatibleRuntimes:
+      - python3.7
+  s3:
+    path: s3_layer # don't use any trailing / or prefix . -> https://github.com/serverless/serverless/issues/5646
+    name: ${self:service}-Python37-s3fs
+    description: s3fs with Python 3.7
+    compatibleRuntimes:
+      - python3.7
+
