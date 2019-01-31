@@ -26,4 +26,10 @@ layers:
     description: s3fs with Python 3.7
     compatibleRuntimes:
       - python3.7
+  bydelsfakta:
+    path: bydelsfakta_layer # don't use any trailing / or prefix . -> https://github.com/serverless/serverless/issues/5646
+    name: ${self:service}-Python37-bydelsfakta
+    description: specific bydelsfakta functions with Python 3.7
+    compatibleRuntimes:
+    - python3.7
 

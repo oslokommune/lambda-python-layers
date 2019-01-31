@@ -1,2 +1,4 @@
+--extra-index-url https://test.pypi.org/pypi/
 pytz==2018.9
 pandas==0.23.4
+pandas-layer-dataplatform
